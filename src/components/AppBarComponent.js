@@ -3,9 +3,11 @@ import { AppBar, Toolbar, Typography, Stack, IconButton, Button } from "@mui/mat
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import AddIcon from '@mui/icons-material/Add';
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";  // Import Link from react-router-dom
+import { useNavigate } from "react-router-dom"
 
 export function AppBarComponent() {
+  const navigate = useNavigate()
   return (
     <AppBar
       position="static"
@@ -22,7 +24,7 @@ export function AppBarComponent() {
           alignItems: "center",
         }}
       >
-        
+        {/* Logo */}
         <Typography
           variant="h6"
           sx={{
@@ -31,11 +33,14 @@ export function AppBarComponent() {
             textAlign: "center",
             flexGrow: { xs: 1, sm: 0 },
           }}
+          onClick={()=>{
+              navigate('/');
+          }}
         >
           ArticleHub
         </Typography>
 
-       
+        {/* Action Buttons for Larger Screens */}
         <Stack
           direction="row"
           spacing={2}
@@ -51,7 +56,7 @@ export function AppBarComponent() {
             <BookmarkBorderIcon />
           </IconButton>
           
-          
+          {/* Create Button with Navigation */}
           <Link to="/create" style={{ textDecoration: "none" }}>
             <Button
               variant="outlined"
@@ -66,7 +71,7 @@ export function AppBarComponent() {
                   borderColor: "black",
                 },
                 "&:hover .MuiSvgIcon-root": {
-                  fill: "white", 
+                  fill: "white",  // Change icon color on hover
                 },
               }}
             >
@@ -75,7 +80,7 @@ export function AppBarComponent() {
           </Link>
         </Stack>
 
-       
+        {/* Menu Icon for Smaller Screens */}
         <IconButton
           aria-label="Menu"
           sx={{
